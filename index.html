@@ -17,11 +17,11 @@
       height: 100%;
       font-family: 'Roboto', sans-serif;
       overflow: hidden;
-      color: #333;
+      color: #2c3e50;
     }
-    /* Animated background with slower movement */
+    /* Animated background with a more subdued color palette */
     body {
-      background: linear-gradient(45deg, #00ff00, #333333, #00ff00, #333333);
+      background: linear-gradient(45deg, #2ecc71, #2c3e50, #2ecc71, #2c3e50);
       background-size: 400% 400%;
       animation: gradientMove 40s ease infinite;
       display: flex;
@@ -34,16 +34,66 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    /* Main container styled as a card */
+    /* Withdraw counter styling (slightly smaller for desktop) */
+    #withdraw-counter {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      border: 2px solid #27ae60;
+      border-radius: 8px;
+      padding: 10px 15px;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 1em;
+    }
+    .counter-label {
+      font-size: 1em;
+      margin-bottom: 5px;
+      color: #27ae60;
+      font-weight: bold;
+    }
+    .counter-digits {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .digit {
+      background: #fff;
+      border: 2px solid #27ae60;
+      border-radius: 4px;
+      padding: 8px;
+      margin: 2px;
+      font-size: 1.2em;
+      width: 30px;
+      text-align: center;
+      font-family: 'Roboto', monospace;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, font-weight 0.3s ease;
+    }
+    .currency-sign {
+      background: #27ae60;
+      color: #fff;
+      font-weight: bold;
+    }
+    /* This class is added briefly to changed digits */
+    .changed {
+      font-weight: bold;
+      transform: scale(1.1);
+    }
+    /* Main container styled as a card for desktop */
     .main-container {
       background: rgba(255, 255, 255, 0.95);
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      max-width: 800px;
+      max-width: 1100px;
       width: 100%;
       padding: 30px;
       text-align: center;
       animation: fadeIn 1.5s ease;
+      overflow-y: auto;
+      max-height: 90vh;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -55,25 +105,26 @@
     }
     .header h1 {
       font-size: 2.5em;
-      color: #00aa00;
+      color: #27ae60;
     }
     .header p {
       font-size: 1.1em;
-      color: #666;
+      color: #7f8c8d;
     }
-    /* Button styling with security cues */
+    /* Button styling with persuasive call-to-action and pulse animation */
     .button {
       padding: 15px 35px;
       font-size: 1.5em;
       font-weight: bold;
-      color: #333;
-      background-color: #00ff00;
+      color: #fff;
+      background-color: #27ae60;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       transition: transform 0.2s, box-shadow 0.2s;
       margin-bottom: 20px;
+      animation: pulse 2s infinite;
     }
     .button:hover {
       transform: scale(1.05);
@@ -84,20 +135,51 @@
       margin-left: 8px;
       vertical-align: middle;
     }
-    /* Info box styling for clear, safe communication */
-    .info-box {
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    /* Mobile games section styling */
+    .mobile-games {
       text-align: left;
-      background: #fff;
-      border: 2px solid #00aa00;
+      background: #f7f7f7;
+      border: 2px solid #27ae60;
       border-radius: 8px;
       padding: 20px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       font-size: 1em;
       line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .mobile-games h2 {
+      margin-bottom: 10px;
+      color: #27ae60;
+      font-size: 1.8em;
+    }
+    .mobile-games p {
+      margin-bottom: 10px;
+    }
+    .mobile-games .emoji {
+      font-size: 1.2em;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    /* Info box styling for clear, safe communication */
+    .info-box {
+      text-align: left;
+      background: #fff;
+      border: 2px solid #27ae60;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      font-size: 1em;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
     .info-box h2 {
       margin-bottom: 10px;
-      color: #00aa00;
+      color: #27ae60;
     }
     .info-box ul {
       list-style: disc inside;
@@ -111,19 +193,33 @@
     }
     .info-box .step h3 {
       margin-bottom: 5px;
-      color: #00aa00;
+      color: #27ae60;
     }
   </style>
 </head>
 <body>
+  <!-- Withdraw counter element -->
+  <div id="withdraw-counter">
+    <div class="counter-label">Total Withdrawn</div>
+    <div id="counter-digits" class="counter-digits"></div>
+  </div>
+  
   <div class="main-container">
     <div class="header">
       <h1>FreeCash</h1>
       <p>Your Trusted Platform to Earn Cash</p>
     </div>
+    <!-- Persuasive Call-to-Action Button at the Top -->
     <button class="button" onclick="goToFreeCash()">
-      Visit FreeCash <span class="secure-icon">🔒</span>
+      Join FreeCash Now – Earn Cash Instantly! <span class="secure-icon">🔒</span>
     </button>
+    <!-- Mobile Games section -->
+    <div class="mobile-games">
+      <h2><span class="emoji">🎮📱</span>Play Mobile Games & Earn Money</h2>
+      <p>Experience top-notch mobile games designed to reward you! Whether you’re on the go or relaxing at home, play exciting games on your mobile device and earn cash as you progress.</p>
+      <p>Enjoy a wide variety of gaming challenges that not only entertain but also pay. Level up, complete in-game challenges, and watch your rewards grow—all while having fun!</p>
+    </div>
+    <!-- Info Box Section -->
     <div class="info-box">
       <h2>Why Use FreeCash?</h2>
       <ul>
@@ -148,11 +244,59 @@
       <p>Plus, enjoy daily bonuses and additional ways to earn—whether by playing games, completing offers, or joining surveys. Start earning free cash within minutes!</p>
     </div>
   </div>
+  
   <script>
+    let withdrawn = 62435228;
+    let previousFormatted = "";
+    
+    // Function to update the digit ticker.
+    function updateDigitCounter(value) {
+      const container = document.getElementById("counter-digits");
+      let newFormatted = value.toLocaleString('en-US');
+      
+      // If container hasn't been populated yet or length differs, re-render completely.
+      if (container.children.length === 0 || container.children.length !== newFormatted.length + 1) {
+        let html = '<span class="digit currency-sign">$</span>';
+        for (const char of newFormatted) {
+          html += '<span class="digit">' + char + '</span>';
+        }
+        container.innerHTML = html;
+      } else {
+        // Compare each digit (skip the first currency-sign child)
+        for (let i = 0; i < newFormatted.length; i++) {
+          const newChar = newFormatted[i];
+          const digitSpan = container.children[i + 1]; // Offset by one for the currency sign
+          if (digitSpan.innerText !== newChar) {
+            digitSpan.innerText = newChar;
+            // Animate the changed digit with a smaller pop out
+            digitSpan.classList.add("changed");
+            setTimeout(() => {
+              digitSpan.classList.remove("changed");
+            }, 500);
+          }
+        }
+      }
+      previousFormatted = newFormatted;
+    }
+    
+    // Initial update of the counter
+    updateDigitCounter(withdrawn);
+    
+    // Function to update the counter with random increments
+    function updateCounter() {
+      const increment = Math.floor(Math.random() * (50 - 10 + 1)) + 10;
+      withdrawn += increment;
+      updateDigitCounter(withdrawn);
+      const nextUpdate = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000;
+      setTimeout(updateCounter, nextUpdate);
+    }
+    
+    setTimeout(updateCounter, Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000);
+    
+    // Redirect button action
     function goToFreeCash() {
       window.open("https://freecash.com/r/BQQCH", "_blank");
     }
   </script>
 </body>
 </html>
-
