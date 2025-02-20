@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FreeCash Portal</title>
+  <!-- Google Fonts for improved typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Roboto', sans-serif;
+      overflow: hidden;
+      color: #333;
+    }
+    /* Animated background with slower movement */
+    body {
+      background: linear-gradient(45deg, #00ff00, #333333, #00ff00, #333333);
+      background-size: 400% 400%;
+      animation: gradientMove 40s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* Main container styled as a card */
+    .main-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      max-width: 800px;
+      width: 100%;
+      padding: 30px;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Header styling for a trustworthy appearance */
+    .header {
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-size: 2.5em;
+      color: #00aa00;
+    }
+    .header p {
+      font-size: 1.1em;
+      color: #666;
+    }
+    /* Button styling with security cues */
+    .button {
+      padding: 15px 35px;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #333;
+      background-color: #00ff00;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 20px;
+    }
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+    .secure-icon {
+      font-size: 0.8em;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    /* Info box styling for clear, safe communication */
+    .info-box {
+      text-align: left;
+      background: #fff;
+      border: 2px solid #00aa00;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      font-size: 1em;
+      line-height: 1.6;
+    }
+    .info-box h2 {
+      margin-bottom: 10px;
+      color: #00aa00;
+    }
+    .info-box ul {
+      list-style: disc inside;
+      margin-bottom: 15px;
+    }
+    .info-box li {
+      margin-bottom: 8px;
+    }
+    .info-box .step {
+      margin-bottom: 15px;
+    }
+    .info-box .step h3 {
+      margin-bottom: 5px;
+      color: #00aa00;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="header">
+      <h1>FreeCash</h1>
+      <p>Your Trusted Platform to Earn Cash</p>
+    </div>
+    <button class="button" onclick="goToFreeCash()">
+      Visit FreeCash <span class="secure-icon">🔒</span>
+    </button>
+    <div class="info-box">
+      <h2>Why Use FreeCash?</h2>
+      <ul>
+        <li><strong>Fast Cashout:</strong> Average time until first cashout is 17m 12s.</li>
+        <li><strong>Great Earnings:</strong> Users earned an average of $39.73 yesterday.</li>
+        <li><strong>Massive Payouts:</strong> Over $50,000,000 USD earned on FreeCash.</li>
+        <li><strong>Trusted Reviews:</strong> Check out 158,791 reviews on Trustpilot!</li>
+      </ul>
+      <h2>How It Works</h2>
+      <div class="step">
+        <h3>1. Choose an Offer</h3>
+        <p>Select from a variety of tasks—including surveys, app downloads, and more—from top companies eager to advertise their products.</p>
+      </div>
+      <div class="step">
+        <h3>2. Complete the Offer</h3>
+        <p>Most tasks are simple and take around 5-10 minutes to complete, helping you earn coins quickly.</p>
+      </div>
+      <div class="step">
+        <h3>3. Get Paid</h3>
+        <p>Earn coins (1000 coins = $1.00) for every task and cash out your earnings almost instantly starting at just $2.00.</p>
+      </div>
+      <p>Plus, enjoy daily bonuses and additional ways to earn—whether by playing games, completing offers, or joining surveys. Start earning free cash within minutes!</p>
+    </div>
+  </div>
+  <script>
+    function goToFreeCash() {
+      window.location.href = "https://freecash.com/r/BQQCH";
+    }
+  </script>
+</body>
+</html>
