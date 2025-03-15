@@ -123,7 +123,7 @@
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       transition: transform 0.2s, box-shadow 0.2s;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       animation: pulse 2s infinite;
     }
     .button:hover {
@@ -139,6 +139,13 @@
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
       100% { transform: scale(1); }
+    }
+    /* Note styling beneath the button */
+    .bonus-note {
+      font-size: 1em;
+      color: #7f8c8d;
+      margin-bottom: 20px;
+      font-style: italic;
     }
     /* Mobile games section styling */
     .mobile-games {
@@ -213,6 +220,10 @@
     <button class="button" onclick="goToFreeCash()">
       Join FreeCash Now – Earn Cash Instantly! <span class="secure-icon">🔒</span>
     </button>
+    <!-- Bonus note beneath the button -->
+    <div class="bonus-note">
+      Sign up and complete your first offer to receive a coupon code for <b>500 extra bonus points</b> on YouLikeHits.com!
+    </div>
     <!-- Mobile Games section -->
     <div class="mobile-games">
       <h2><span class="emoji">🎮📱</span>Play Mobile Games & Earn Money</h2>
